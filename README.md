@@ -1,4 +1,4 @@
-Board Foot Calculator
+Board Feet Calculator
 =====================
 
 For calculating board feet as conveniently as possible.
