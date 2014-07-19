@@ -1,0 +1,41 @@
+td {
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid black;
+	width: 25%;
+}
+
+.keypad {
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.number {
+	background-color: #dde;
+}
+
+.unit {
+	background-color: #edd;
+}
+
+.operator {
+	background-color: #ded;
+}
+
+.container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+}
+.dummy {
+    margin-top: 100%;
+}
+
+@media screen and (min-width:768px) { 
+	.container {
+		width: 300px;
+	}
+}

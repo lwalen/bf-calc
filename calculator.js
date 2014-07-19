@@ -38,10 +38,11 @@ function parseInput(v) {
 function parseUnit(value) {
 
 	// extract the symbol
-	unit_symbol = value.match(/^[0-9\/.]*(['"]{1,2})$/);
+	unit_symbol = value.match(/^[0-9\/.]* ?(['"inft]{1,2})$/);
 
 	if (unit_symbol) {
-		if (unit_symbol[1] == "'") {
+		symbol = unit_symbol[1];
+		if (symbol == "'" || symbol == 'ft') {
 			return 'feet';
 		} else if (unit_symbol[1] == "''" || unit_symbol[1] == '"') {
 			return 'inches';
@@ -85,13 +86,14 @@ function assert(f, a, e) {
 	console.log((f(a) == e) + "\t: " + f.name + "(" + a + ")" + " == " + e);
 }
 
+// CTRL + SHIFT + J. runTests()
 function runTests() {
 	parse_unit_tests = {'2"'   : 'inches',
-	                      "3'"   : 'feet',
-	                      "4''"  : 'inches',
-	                      "5.0'" : 'feet',
-	                      '6/7"' : 'inches'
-	                     }
+	                    "3'"   : 'feet',
+	                    "4''"  : 'inches',
+	                    "5.0'" : 'feet',
+	                    '6/7"' : 'inches'
+	                   }
 	$.each(parse_unit_tests, function(value, expected) {
 		assert(parseUnit, value, expected);
 	});
@@ -118,6 +120,8 @@ function runTests() {
 }
 
 $(function() {
+   FastClick.attach(document.body);
+
 	$('.length, .width, .thickness').bind('keyup', function() {
 		setTimeout(function() {
 			updateBoardFeet();
@@ -130,4 +134,29 @@ $(function() {
 		}, 0);
 	});
 
+	$('.length').focus(function(e) {
+		e.preventDefault();
+	});
+
+	$('td').click(function() {
+		td = $(this).text();
+
+		$('.length').val(function(i, v) {
+			console.log(td);
+
+			if (td == "space") {
+				return v + ' ';
+			} else if (td == "del") {
+				return v.slice(0, -1);
+			} else if (td == "ft") {
+				return v + "'";
+			} else if (td == "in") {
+				return v + '"';
+			} else {
+				return v + td;
+			}
+		});
+
+		updateBoardFeet();
+	});
 });
