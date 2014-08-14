@@ -30,8 +30,19 @@ td {
     position: relative;
     width: 100%;
 }
+
+.outer-container {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
 .dummy {
     margin-top: 100%;
+}
+
+.spacer {
+	height: 300px;
 }
 
 @media screen and (min-width:768px) { 
