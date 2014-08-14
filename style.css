@@ -50,13 +50,14 @@ td {
 
 .board-feet {
 	background-color: #ddd;
+	text-align: left;
 }
 
 .field-label {
 	display: inline-block;
 	font-weight: bold;
 	padding: 6px 0;
-	margin-right: 12px;
+	margin: 0 12px;
 }
 
 .field-text {
@@ -71,11 +72,17 @@ td {
 
 .board-feet .field-text {
 	float: left;
+	width: 50%;
 }
 
 .selected .field-text {
 	border: 2px solid black;
 	padding: 1px 9px;
+}
+
+.add {
+	float: right;
+	color: blue;
 }
 
 .dummy {

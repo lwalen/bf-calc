@@ -81,7 +81,7 @@ function updateBoardFeet() {
 	t = parseInput(t);
 
 	if ($.isNumeric(l) && $.isNumeric(w) && $.isNumeric(t)) {
-		$('.board-feet .field-text').text(l * w * t / 144);
+		$('.board-feet .field-text').text((l * w * t / 144).toFixed(2));
 	} else {
 		$('.board-feet .field-text').text('');
 	}
