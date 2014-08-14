@@ -87,6 +87,20 @@ function updateBoardFeet() {
 	}
 }
 
+function convertButton(key, value) {
+	if (key == "space") {
+		return value + ' ';
+	} else if (key == "del") {
+		return value.slice(0, -1);
+	} else if (key == "ft") {
+		return value + "'";
+	} else if (key == "in") {
+		return value + '"';
+	} else {
+		return value + key;
+	}
+}
+
 $(function() {
    FastClick.attach(document.body);
 
@@ -94,19 +108,7 @@ $(function() {
 		td = $(this).text();
 
 		$('.selected .field-text').text(function(i, v) {
-			// console.log(td);
-
-			if (td == "space") {
-				return v + ' ';
-			} else if (td == "del") {
-				return v.slice(0, -1);
-			} else if (td == "ft") {
-				return v + "'";
-			} else if (td == "in") {
-				return v + '"';
-			} else {
-				return v + td;
-			}
+			return convertButton(td, v);
 		});
 
 		updateBoardFeet();
