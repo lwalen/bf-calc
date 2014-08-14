@@ -102,6 +102,13 @@ function convertButton(key, value) {
 	}
 }
 
+function resetFields() {
+	$('.length .field-text').text('');
+	$('.width .field-text').text('');
+	$('.thickness .field-text').text('');
+	$('.board-feet .field-text').text('');
+}
+
 $(function() {
 	// respond to touch faster
    FastClick.attach(document.body);
@@ -121,5 +128,14 @@ $(function() {
 	$('.field').click(function() {
 		$('.field').removeClass('selected');
 		$(this).addClass('selected');
+	});
+
+	// add current board feet to history
+	$('.add').click(function() {
+		var bf = $('.board-feet .field-text').text();
+		if (bf !== '') {
+			$('.history').append("<div class='history-item'>" + bf + "</div>");
+			resetFields();
+		}
 	});
 });
