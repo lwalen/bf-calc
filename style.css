@@ -43,7 +43,7 @@ td {
 }
 
 .field, .board-feet {
-	height: 3.5em;
+	height: 50px;
 	padding: 8px;
 	text-align: right;
 }
@@ -51,6 +51,8 @@ td {
 .board-feet {
 	background-color: #ddd;
 	text-align: left;
+	width: 240px;
+	float: left;
 }
 
 .field-label {
@@ -72,7 +74,7 @@ td {
 
 .board-feet .field-text {
 	float: left;
-	width: 50%;
+	width: 58%;
 }
 
 .selected .field-text {
@@ -81,16 +83,21 @@ td {
 }
 
 .add {
-	float: right;
+	display: inline-block;
+	height: 50px;
+	width: 80px;
+
+	padding: 14px 0;
+
+
+	font-weight: bold;
+	text-align: center;
 	color: blue;
+	background-color: lightblue;
 }
 
 .dummy {
     margin-top: 75%;
-}
-
-.spacer {
-	height: 300px;
 }
 
 @media screen and (min-width:768px) { 
