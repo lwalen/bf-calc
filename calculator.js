@@ -81,12 +81,13 @@ function updateBoardFeet() {
 	t = parseInput(t);
 
 	if ($.isNumeric(l) && $.isNumeric(w) && $.isNumeric(t)) {
-		$('.board-feet').text(l * w * t / 144);
+		$('.board-feet .field-text').text(l * w * t / 144);
 	} else {
-		$('.board-feet').text('');
+		$('.board-feet .field-text').text('');
 	}
 }
 
+// update value based on key pressed
 function convertButton(key, value) {
 	if (key == "space") {
 		return value + ' ';
@@ -102,8 +103,10 @@ function convertButton(key, value) {
 }
 
 $(function() {
+	// respond to touch faster
    FastClick.attach(document.body);
 
+   // handle keypad use
 	$('.keypad td').click(function() {
 		td = $(this).text();
 
@@ -114,6 +117,7 @@ $(function() {
 		updateBoardFeet();
 	});
 
+	// handle field selection
 	$('.field').click(function() {
 		$('.field').removeClass('selected');
 		$(this).addClass('selected');

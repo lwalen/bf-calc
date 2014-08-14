@@ -42,25 +42,44 @@ td {
 	height: 100%;
 }
 
-.field {
-	background-color: #ddd;
-	border: 1px solid black;
-}
-
-.field-label {
-	font-weight: bold;
-}
-
-.field-text {
+.field, .board-feet {
+	height: 3.5em;
+	padding: 8px;
 	text-align: right;
 }
 
-.selected {
-	background-color: #ddb;
+.board-feet {
+	background-color: #ddd;
+}
+
+.field-label {
+	display: inline-block;
+	font-weight: bold;
+	padding: 6px 0;
+	margin-right: 12px;
+}
+
+.field-text {
+	display: inline-block;
+	float: right;
+	border: 1px solid black;
+	width: 70%;
+	height: 100%;
+	padding: 2px 10px;
+	font-size: 1.4em;
+}
+
+.board-feet .field-text {
+	float: left;
+}
+
+.selected .field-text {
+	border: 2px solid black;
+	padding: 1px 9px;
 }
 
 .dummy {
-    margin-top: 100%;
+    margin-top: 75%;
 }
 
 .spacer {
