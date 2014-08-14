@@ -93,7 +93,11 @@ td {
 	font-weight: bold;
 	text-align: center;
 	color: blue;
-	background-color: lightblue;
+	background-color: #ADD8E6;
+}
+
+.add:active {
+	background-color: #7AA5B3;
 }
 
 .dummy {
