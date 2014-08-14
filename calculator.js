@@ -134,7 +134,7 @@ $(function() {
 	$('.add').click(function() {
 		var bf = $('.board-feet .field-text').text();
 		if (bf !== '') {
-			$('.history').append("<div class='history-item'>" + bf + "</div>");
+			$('.history').prepend("<div class='history-item'>" + bf + "</div>");
 			resetFields();
 		}
 	});
