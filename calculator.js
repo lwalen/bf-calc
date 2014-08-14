@@ -6,6 +6,10 @@ function parseInput(v) {
 		return '';
 	}
 
+	// pad with a space right after ' and "
+	v = v.replace('"', '" ');
+	v = v.replace("'", "' ");
+
 	// split input into feet and inches, if applicable
 	var array = v.split(' ');
 
@@ -42,13 +46,13 @@ function parseInput(v) {
 function parseUnit(value) {
 
 	// extract the symbol
-	unit_symbol = value.match(/^[0-9\/.]* ?(['"inft]{1,2})$/);
+	unit_symbol = value.match(/^[0-9\/.]* ?(['"])$/);
 
 	if (unit_symbol) {
 		symbol = unit_symbol[1];
-		if (symbol == "'" || symbol == 'ft') {
+		if (symbol == "'") {
 			return 'feet';
-		} else if (unit_symbol[1] == "''" || unit_symbol[1] == '"') {
+		} else if (symbol == '"') {
 			return 'inches';
 		}
 	}
