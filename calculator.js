@@ -2,6 +2,10 @@
 // turns an input string like "2' 3/4''" into a float like 24.75
 function parseInput(v) {
 
+	if (v == '') {
+		return '';
+	}
+
 	// split input into feet and inches, if applicable
 	var array = v.split(' ');
 
@@ -64,48 +68,29 @@ function evaluateFractions(value) {
 
 // update board feet field
 function updateBoardFeet() {
-	var l = $('.length').val();
-	var w = $('.width').val();
-	var t = $('.thickness').val();
+	var l = $('.length .field-text').text();
+	var w = $('.width .field-text').text();
+	var t = $('.thickness .field-text').text();
 
-	if (l != "") { l = parseInput(l) }
-	if (w != "") { w = parseInput(w) }
-	if (t != "") { t = parseInput(t) }
+	l = parseInput(l);
+	w = parseInput(w);
+	t = parseInput(t);
 
 	if ($.isNumeric(l) && $.isNumeric(w) && $.isNumeric(t)) {
-		if ($('.length_unit').val() == "ft") { l *= 12 }
-		if ($('.width_unit').val() == "ft") { w *= 12 }
-		if ($('.thickness_unit').val() == "ft") { t *= 12 }
-		$('.board-feet').val(l * w * t / 144);
+		$('.board-feet').text(l * w * t / 144);
 	} else {
-		$('.board-feet').val('');
+		$('.board-feet').text('');
 	}
 }
 
 $(function() {
    FastClick.attach(document.body);
 
-	$('.length, .width, .thickness').bind('keyup', function() {
-		setTimeout(function() {
-			updateBoardFeet();
-		}, 0);
-	});
-
-	$('.length_unit, .width_unit, .thickness_unit').change('keyup', function() {
-		setTimeout(function() {
-			updateBoardFeet();
-		}, 0);
-	});
-
-	$('.length').focus(function(e) {
-		e.preventDefault();
-	});
-
-	$('.keyboard td').click(function() {
+	$('.keypad td').click(function() {
 		td = $(this).text();
 
-		$('.length').val(function(i, v) {
-			console.log(td);
+		$('.selected .field-text').text(function(i, v) {
+			// console.log(td);
 
 			if (td == "space") {
 				return v + ' ';
@@ -121,5 +106,10 @@ $(function() {
 		});
 
 		updateBoardFeet();
+	});
+
+	$('.field').click(function() {
+		$('.field').removeClass('selected');
+		$(this).addClass('selected');
 	});
 });
