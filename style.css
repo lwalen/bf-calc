@@ -89,7 +89,6 @@ td {
 
 	padding: 14px 0;
 
-
 	font-weight: bold;
 	text-align: center;
 	color: blue;
@@ -110,8 +109,33 @@ td {
 	background-color: #eee;
 }
 
+.header, .footer {
+	display: none;
+}
+
 @media screen and (min-width:768px) { 
-	.container {
-		width: 300px;
+
+	.header, .footer {
+		display: block;
+		width: 320px;
+		height: 200px;
+		margin: auto;
+	}
+
+	.main {
+		width: 320px;
+		height: 568px;
+		margin: auto;
+		background-color: white;
+		position: relative;
+		border: 3px solid black;
+	}
+
+	body {
+		background-color: #aaa;
+	}
+
+	.keypad {
+		position: absolute;
 	}
 }
