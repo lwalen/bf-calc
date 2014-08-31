@@ -1,14 +1,15 @@
 function assert(f, a, e) {
-	console.log((f(a) == e) + "\t: " + f.name + "(" + a + ")" + ": " + f(a) + " == " + e);
+	result = f(a);
+	console.log((result == e) + "\t: " + f.name + "(" + a + "): " + result + " == " + e);
 }
 
 // CTRL + SHIFT + J. runTests()
 function runTests() {
-	parse_unit_tests = {'2"'     : 'inches',
-	                    "3'"     : 'feet',
-	                    "5.0'"   : 'feet',
-	                    '6/7"'   : 'inches',
-	                    "1 3/4'" : 'feet'
+	parse_unit_tests = {'2'      : 'i',
+	                    "3f"     : 'f',
+	                    "5.0f"   : 'f',
+	                    '6/7i'   : 'i',
+	                    "1 3/4f" : 'f'
 	                   }
 	$.each(parse_unit_tests, function(value, expected) {
 		assert(parseUnit, value, expected);

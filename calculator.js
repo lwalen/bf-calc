@@ -6,68 +6,69 @@ function parseInput(v) {
 		return '';
 	}
 
-	// pad with a space right after ' and "
-	v = v.replace('"', '" ');
-	v = v.replace("'", "' ");
+	// turn ' into f' and turn " into i", for easier parsing
+	v = v.replace('"', 'i"');
+	v = v.replace("'", "f'");
 
-	// split input into feet and inches, if applicable
-	var array = v.split(' ');
+	// split input on units
+	var array = v.split(/['"]/);
 
-	// remove empty elements
-	array = array.filter(function(e){return e});
+	array = removeEmpty(array);
 
-	var results = new Array();
+	results = [];
 
 	$.each(array, function(index, value) {
+
 		var unit = parseUnit(value);
 
 		// remove unit symbols
-		value = value.replace(/['"]/g, '')
+		value = value.replace(/[fi]/g, '');
 
 		result = evaluateFractions(value);
 
 		// convert feet to inches
-		if (unit == 'feet') {
+		if (unit == 'f') {
 			result = result * 12;
 		}
 
 		results.push(result);
 	});
 
-	// sum the values
-	var final_value = results.reduce(function(a, b) {
-		return a + b;
-	});
-
-	return final_value;
+	return sum(results);
 }
 
-// determines the unit of a thing like 3/4''
+// determines the unit of a thing like 3/4i
 function parseUnit(value) {
 
 	// extract the symbol
-	unit_symbol = value.match(/^[0-9\/.]* ?(['"])$/);
+	unit_symbol = value.match(/^.*([fi])$/);
 
 	if (unit_symbol) {
-		symbol = unit_symbol[1];
-		if (symbol == "'") {
-			return 'feet';
-		} else if (symbol == '"') {
-			return 'inches';
-		}
+		return unit_symbol[1];
 	}
-	return 'inches';
+	return 'i';
 }
 
 // evaluates fractions if they exist and turns them into a number
 function evaluateFractions(value) {
-	arr = value.split('/');
-	arr = arr.filter(function(e){return e});
-	if (arr.length > 1) {
-		return arr[0] / arr[1];
-	} else {
-		return parseFloat(arr[0]);
-	}
+	outer_arr = value.split(' ');
+
+	outer_arr = removeEmpty(outer_arr);
+
+	values = []
+
+	$.each(outer_arr, function(i, v) {
+		arr = v.split('/');
+		arr = removeEmpty(arr);
+
+		if (arr.length > 1) {
+			values.push(arr[0] / arr[1]);
+		} else {
+			values.push(parseFloat(arr[0]))
+		}
+	});
+
+	return sum(values);
 }
 
 // update board feet field
@@ -107,6 +108,18 @@ function resetFields() {
 	$('.width .field-text').text('');
 	$('.thickness .field-text').text('');
 	$('.board-feet .field-text').text('');
+}
+
+function sum(array) {
+	return array.reduce(function(a, b) {
+		return a + b;
+	});
+}
+
+function removeEmpty(array) {
+	return array.filter(function(e) {
+		return e;
+	});
 }
 
 $(function() {
