@@ -1,7 +1,7 @@
 td {
 	text-align: center;
 	vertical-align: middle;
-	border: 1px solid black;
+	border: 2px solid white;
 	width: 25%;
 }
 
@@ -23,6 +23,10 @@ td {
 
 .operator {
 	background-color: #ded;
+}
+
+.other {
+	background-color: #eee;
 }
 
 .container {
@@ -55,6 +59,10 @@ td {
 	float: left;
 }
 
+.board-feet .field-text {
+	background-color: #fff;
+}
+
 .field-label {
 	display: inline-block;
 	font-weight: bold;
@@ -63,6 +71,7 @@ td {
 }
 
 .field-text {
+	font-family: monospace;
 	display: inline-block;
 	float: right;
 	border: 1px solid black;
@@ -70,6 +79,12 @@ td {
 	height: 100%;
 	padding: 2px 10px;
 	font-size: 1.4em;
+}
+
+.field .field-text {
+	-webkit-box-shadow: inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
+	-moz-box-shadow:    inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
+	box-shadow:         inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
 }
 
 .board-feet .field-text {
@@ -82,7 +97,7 @@ td {
 	padding: 1px 9px;
 }
 
-.add {
+.save {
 	display: inline-block;
 	height: 50px;
 	width: 80px;
@@ -95,15 +110,16 @@ td {
 	background-color: #ADD8E6;
 }
 
-.add:active {
+.save:active {
 	background-color: #7AA5B3;
 }
 
-.dummy {
+.keypad .dummy {
     margin-top: 75%;
 }
 
 .history-item {
+	font-family: monospace;
 	margin-top: 3px;
 	padding: 0 0 0 15px;
 	background-color: #eee;
@@ -137,5 +153,13 @@ td {
 
 	.keypad {
 		position: absolute;
+	}
+
+	.field-label {
+		font-size: .8em;
+	}
+
+	.save {
+		width: 65px;
 	}
 }

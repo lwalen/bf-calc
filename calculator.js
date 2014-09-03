@@ -144,7 +144,7 @@ $(function() {
 	});
 
 	// add current board feet to history
-	$('.add').click(function() {
+	$('.save').click(function() {
 		var bf = $('.board-feet .field-text').text();
 		if (bf !== '') {
 			$('.history').prepend("<div class='history-item'>" + bf + "</div>");
