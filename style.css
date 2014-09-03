@@ -1,208 +1,162 @@
 body {
-	margin: 0;
-	line-height: 1.42857143;
-	color: #333;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.42857143;
 }
 
-* {
-	box-sizing: border-box;
-}
+div { box-sizing: border-box }
 
 table {
-	border-collapse: collapse;
-	border-style: hidden;
+    border-collapse: collapse;
+    border-style: hidden;
 }
 
 td {
-	text-align: center;
-	vertical-align: middle;
-	border: 2px solid white;
-	width: 25%;
-	color: #FAF9F2;
-	font-size: 1.8em;
-	font-weight: bold;
-	font-family: monospace;
-	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+    width: 25%;
+    color: #FAF9F2;
+    font-size: 1.8em; font-weight: bold;
+    text-align: center;
+    border: 2px solid white;
+    font-family: monospace;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
 }
 
 .inner {
-	position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: absolute;
+    bottom: 0; left: 0; right: 0; top: 0
 }
 
-.number {
-	background-color: #63A599;
-}
+.number { background-color: #63A599 }
 
-.number:active {
-	background-color: #438579;
-}
+.number:active { background-color: #438579 }
 
-.unit {
-	background-color: #1F2F3F;
-}
+.unit { background-color: #1F2F3F }
 
-.unit:active {
-	background-color: #000F1F;
-}
+.unit:active { background-color: #000F1F }
 
-.operator {
-	background-color: #465057;
-}
+.operator { background-color: #465057 }
 
-.operator:active {
-	background-color: #263037;
-}
+.operator:active { background-color: #263037 }
 
-.other {
-	background-color: #A6A497;
-}
+.other { background-color: #A6A497 }
 
-.other:active {
-	background-color: #868477;
-}
+.other:active { background-color: #868477 }
 
 .container {
-    display: inline-block;
-    position: relative;
-    width: 100%;
+    display: inline-block; position: relative;
+    width: 100%
 }
 
 .keypad {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+    position: fixed;
+    bottom: 0;
+    width: 100%
 }
 
-.keypad table.buttons {
-	width: 100%;
-	height: 100%;
+.keypad .buttons {
+    height: 100%; width: 100%
 }
 
-.field, .board-feet {
-	height: 50px;
-	padding: 8px;
-	text-align: right;
+.keypad .dummy { margin-top: 75% }
+
+.field,
+.board-feet {
+    height: 50px;
+    padding: 8px;
+    text-align: right
+}
+
+.board-feet .field-label { margin: 0 0 0 12px }
+
+.board-feet .field-text {
+    float: left;
+    width: 58%
+}
+
+.board-feet .field-text { background-color: #fff }
+
+.field .field-text {
+    -moz-box-shadow: inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
+    -webkit-box-shadow: inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
+    box-shadow: inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
+    overflow: hidden;
+    text-overflow: "";
 }
 
 .board-feet {
-	background-color: #ddd;
-	text-align: left;
-	width: 75%;
-	float: left;
-}
-
-.board-feet .field-text {
-	background-color: #fff;
+    float: left;
+    width: 75%;
+    background-color: #ddd;
+    text-align: left
 }
 
 .field-label {
-	display: inline-block;
-	font-weight: bold;
-	padding: 6px 0;
-	margin: 0 12px 0 0;
+    display: inline-block;
+    margin: 0 12px 0 0; padding: 6px 0;
+    font-weight: bold
 }
 
 .field-text {
-	font-family: monospace;
-	display: inline-block;
-	float: right;
-	border: 1px solid black;
-	width: 70%;
-	height: 100%;
-	padding: 2px 10px;
-	font-size: 1.4em;
-}
-
-.field .field-text {
-	-webkit-box-shadow: inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
-	-moz-box-shadow:    inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
-	box-shadow:         inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
-	overflow: hidden;
-	text-overflow: "";
-}
-
-.board-feet .field-label {
-	margin: 0 0 0 12px;
-}
-
-.board-feet .field-text {
-	float: left;
-	width: 58%;
+    float: right;
+    height: 100%; width: 70%;
+    padding: 2px 10px;
+    font-size: 1.4em;
+    border: 1px solid black;
+    font-family: monospace;
 }
 
 .selected .field-text {
-	border: 2px solid black;
-	padding: 1px 9px;
+    padding: 1px 9px;
+    border: 2px solid black
 }
 
 .save {
-	display: inline-block;
-	height: 50px;
-	width: 25%;
-
-	padding: 14px 0;
-
-	font-weight: bold;
-	text-align: center;
-	color: blue;
-	background-color: #ADD8E6;
+    display: inline-block;
+    height: 50px; width: 25%;
+    padding: 14px 0;
+    background-color: #ADD8E6; color: blue;
+    font-weight: bold;
+    text-align: center
 }
 
-.save:active {
-	background-color: #7AA5B3;
-}
-
-.keypad .dummy {
-    margin-top: 75%;
-}
+.save:active { background-color: #7AA5B3 }
 
 .history-item {
-	font-family: monospace;
-	margin-top: 3px;
-	padding: 0 0 0 15px;
-	background-color: #eee;
+    margin-top: 3px;
+    padding: 0 0 0 15px;
+    background-color: #eee;
+    font-family: monospace
 }
 
-.header, .footer {
-	display: none;
-}
+.header,
+.footer { display: none }
 
 @media screen and (min-width:768px) { 
+    .header,
+    .footer {
+        display: block;
+        width: 600px;
+        margin-top: 40px;
+        margin: auto
+    }
 
-	.header, .footer {
-		display: block;
-		width: 600px;
-		margin: auto;
-		margin-top: 40px;
-	}
+    .main {
+        position: relative;
+        height: 568px; width: 320px;
+        margin: auto;
+        background-color: white;*/
+        -moz-box-shadow: 0 0 65px 10px rgba(255,255,255,0.3);
+        -webkit-box-shadow: 0 0 65px 10px rgba(255,255,255,0.3);
+        border: 3px solid black;
+        box-shadow: 0 0 65px 10px rgba(255,255,255,0.3);
+    }
 
-	.main {
-		width: 320px;
-		height: 568px;
-		margin: auto;
-		background-color: white;
-		position: relative;
-		/*border: 3px solid black;*/
-		-webkit-box-shadow: 0px 0px 65px 10px rgba(255,255,255,0.3);
-		-moz-box-shadow: 0px 0px 65px 10px rgba(255,255,255,0.3);
-		box-shadow: 0px 0px 65px 10px rgba(255,255,255,0.3);
-	}
+    body { background-color: #aaa }
 
-	body {
-		background-color: #aaa;
-	}
+    .keypad { position: absolute }
 
-	.keypad {
-		position: absolute;
-	}
-
-	.field-label {
-		font-size: .9em;
-	}
+    .field-label { font-size: .9em }
 }
