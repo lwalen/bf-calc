@@ -90,7 +90,7 @@ function updateBoardFeet() {
 
 // update value based on key pressed
 function convertButton(key, value) {
-	if (key == "space") {
+	if (key == "spc") {
 		return value + ' ';
 	} else if (key == "del") {
 		return value.slice(0, -1);

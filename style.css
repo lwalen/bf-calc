@@ -1,8 +1,18 @@
+table {
+	border-collapse: collapse;
+	border-style: hidden;
+}
+
 td {
 	text-align: center;
 	vertical-align: middle;
 	border: 2px solid white;
 	width: 25%;
+	color: #FAF9F2;
+	font-size: 1.8em;
+	font-weight: bold;
+	font-family: monospace;
+	text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
 .inner {
@@ -14,19 +24,35 @@ td {
 }
 
 .number {
-	background-color: #dde;
+	background-color: #63A599;
+}
+
+.number:active {
+	background-color: #438579;
 }
 
 .unit {
-	background-color: #edd;
+	background-color: #1F2F3F;
+}
+
+.unit:active {
+	background-color: #000F1F;
 }
 
 .operator {
-	background-color: #ded;
+	background-color: #465057;
+}
+
+.operator:active {
+	background-color: #263037;
 }
 
 .other {
-	background-color: #eee;
+	background-color: #A6A497;
+}
+
+.other:active {
+	background-color: #868477;
 }
 
 .container {
@@ -55,7 +81,7 @@ td {
 .board-feet {
 	background-color: #ddd;
 	text-align: left;
-	width: 240px;
+	width: 75%;
 	float: left;
 }
 
@@ -67,7 +93,7 @@ td {
 	display: inline-block;
 	font-weight: bold;
 	padding: 6px 0;
-	margin: 0 12px;
+	margin: 0 12px 0 0;
 }
 
 .field-text {
@@ -85,6 +111,12 @@ td {
 	-webkit-box-shadow: inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
 	-moz-box-shadow:    inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
 	box-shadow:         inset 2px 2px 3px 0 rgba(50, 50, 50, 0.3);
+	overflow: hidden;
+	text-overflow: "";
+}
+
+.board-feet .field-label {
+	margin: 0 0 0 12px;
 }
 
 .board-feet .field-text {
@@ -100,7 +132,7 @@ td {
 .save {
 	display: inline-block;
 	height: 50px;
-	width: 80px;
+	width: 25%;
 
 	padding: 14px 0;
 
@@ -144,7 +176,7 @@ td {
 		margin: auto;
 		background-color: white;
 		position: relative;
-		border: 3px solid black;
+		/*border: 3px solid black;*/
 	}
 
 	body {
@@ -156,10 +188,7 @@ td {
 	}
 
 	.field-label {
-		font-size: .8em;
+		font-size: .9em;
 	}
 
-	.save {
-		width: 65px;
-	}
 }
